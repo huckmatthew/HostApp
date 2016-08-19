@@ -1,0 +1,1 @@
+{"hostName" : "default", "applicationName":"default","type":"ColoredConsoleAppender","conversionPattern":"%date [%thread] %-5level %logger %message%newline","threshold":"DEBUG","maps":[{"level":"WARN","foreColor":"Red"},{"level":"DEBUG","foreColor":"GREEN"},{"level":"INFO","foreColor":"Yellow"},{"level":"ERROR","foreColor":"WHITE","backColor":"Red, HighIntensity"}]}
