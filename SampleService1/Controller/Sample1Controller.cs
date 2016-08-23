@@ -14,8 +14,8 @@ namespace SampleService1.Controller
     [RoutePrefix("api/sample1")]
     public class Sample1Controller : ApiController
     {
-        private readonly Counter _counter = Metric.Counter("Count", Unit.Requests);
-        private readonly Timer _meter = Metric.Timer("Errors", Unit.Requests);
+        private readonly Counter _counter = Metric.Context("SampleService1.Sample").Counter("Count", Unit.Requests);
+        private readonly Timer _timer = Metric.Context("SampleService1.Sample").Timer("Requests", Unit.Requests);
         private ILog _log;
 
         public Sample1Controller(ILog log)
@@ -34,7 +34,7 @@ namespace SampleService1.Controller
                 throw new ArgumentNullException(nameof(name));
             }
 
-            using (_meter.NewContext())
+            using (_timer.NewContext())
             {
                 _log.Debug("Processing -{0}".FormatWith(name));
 

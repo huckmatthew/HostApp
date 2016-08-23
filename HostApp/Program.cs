@@ -12,7 +12,6 @@ using HostApp.Core.Extensions;
 using HostApp.Core.Interfaces;
 using Topshelf;
 
-
 namespace HostApp
 {
     class Program
