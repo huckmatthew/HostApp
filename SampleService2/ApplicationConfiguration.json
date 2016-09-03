@@ -1,0 +1,6 @@
+{
+  "hostName": "default",
+  "applicationName": "$safeprojectname$",
+  "servicePort": 9012,
+  "url": "http://+"
+}
