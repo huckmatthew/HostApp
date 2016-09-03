@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Http;
+using System.Web.Http.Dispatcher;
 using Autofac;
 using Autofac.Integration.WebApi;
 using HostApp.Core.Interfaces;
@@ -21,23 +22,13 @@ namespace HostApp.BootStrap
 
             // Configure Web API for self-host. 
             var config = new HttpConfiguration();
+
+            config.MapHttpAttributeRoutes(new CustomDirectRouteProvider());
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
-
-            config.MapHttpAttributeRoutes();
-
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApiAction",
-            //    routeTemplate: "api/{controller}/{action}/");
-
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional });
-
 
             var appConfig = container.Resolve<IApplicationConfiguration>();
             if (appConfig == null)
-                throw new Exception("Application config  not configured correctly");
+                throw new Exception("Application not configured correctly");
 
             if (container.IsRegistered<IMetricsConfigLogic>())
             {
@@ -46,8 +37,6 @@ namespace HostApp.BootStrap
             }
 
             appBuilder.Use(typeof(MiddleWareBasicLogger));
-
-            //config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 
             appBuilder.UseAutofacMiddleware(container);
 

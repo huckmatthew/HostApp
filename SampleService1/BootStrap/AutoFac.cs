@@ -23,18 +23,9 @@ namespace SampleService1.BootStrap
 
         public void Configure(ContainerBuilder builder, object appConfig)
         {
-            //var log = EPTLogManager.GetLogger(this.GetType());
-
-            _log.Debug("Starting Configure IOC Ping");
+         
+            _log.Debug("Starting Configure IOC SampleService1");
             var config = (IRestServiceConfiguration)appConfig;
-
-            //Services
-            //builder.RegisterType<SettingsLogic>().As<ISettingsLogic>();
-            //builder.RegisterType<LocalMetricsConfig>().As<IMetricsConfigLogic>();
-            //SQL Repository
-            //builder.RegisterType<SettingsSQLRepository>().As<ISettingsRepository>();
-            //MongoDB Repository
-            //builder.Register(c=> new SettingsMongoRepository( config.MongoDBConnection, MongoConstants.ConfigurationDatabase)).As<ISettingsRepository>();
 
             builder.Register(c => LogManager.GetLogger("SampleService1")).As<ILog>();
 

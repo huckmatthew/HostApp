@@ -132,6 +132,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BootStrap\CustomDirectRouteProvider.cs" />
     <Compile Include="BootStrap\LoadConfiguration.cs" />
     <Compile Include="BootStrap\LoadIOC.cs" />
     <Compile Include="BootStrap\Startup.cs" />
@@ -169,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTO\" />
+    <Folder Include="Web\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

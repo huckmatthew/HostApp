@@ -7,8 +7,6 @@ namespace HostApp.Interfaces
     {
         IBusinessServiceConfiguration GetBusinessServiceAppConfig(string hostName, string applicationName);
         IServiceHostConfiguration GetServiceHostConfig(string hostName, string applicationName);
-        //Task<IIdentityApiConfiguration> GetIdentityApiAppConfig(string hostName, string applicationName);
-        //Task<IIdentityWebConfiguration> GetIdentityWebAppConfig(string hostName, string applicationName);
         IRestServiceConfiguration GetRestServiceAppConfig(string hostName, string applicationName);
     }
 }

@@ -15,14 +15,10 @@ namespace HostApp.Core.Common
         public const string LogSettingsNotDefined = "No Log Settings Configured";
         public const string LogSettingsInvalid = "Invalid Log Type";
         public const string MetricsSettingsNotDefined = "No Metrics Settings Configured";
-        public const string CacheSettingsNotDefined = "No Cache Settings Configured";
         public const string NoMongoConnectionString = "No MongoDB connection string defined";
-        public const string NoSqlCommandsDefined = "No SQL Commands Defined";
 
         public const string ActivityNotFound = "Activity Not Found";
         public const string TimeOut = "Time Out";
-        public const string WorkingStateNotFound = "Working State Not Found";
-        public const string WorkingStateInvalid = "Invalid Working State";
         public const string BusExchangeInvalid = "Exchange Configuration is Invalid: {0}";
         public const string UndefinedError = "Internal Server Error";
         public const string NoRecoredsFound = "No Records Found";

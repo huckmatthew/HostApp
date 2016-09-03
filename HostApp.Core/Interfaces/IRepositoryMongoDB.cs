@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HostApp.Core.DTO;
+﻿using HostApp.Core.DTO;
 using MongoDB.Bson;
 
 namespace HostApp.Core.Interfaces

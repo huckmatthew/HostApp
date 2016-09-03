@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using HostApp.Core.Interfaces;
 using MongoDB.Bson;
@@ -38,8 +36,6 @@ namespace HostApp.Core.Repository
             Task<List<TEntity>> data = Context.GetCollection.FindAsync(new BsonDocument()).Result.ToListAsync();
 
             return await data;
-            //var returndata = await data;
-            //return returndata.ToArray();
         }
 
         public string GetBsonAll()

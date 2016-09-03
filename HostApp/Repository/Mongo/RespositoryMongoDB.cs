@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
 using System.Threading.Tasks;
 using HostApp.Core.DTO;
 using HostApp.Core.Interfaces;
@@ -15,7 +12,6 @@ namespace HostApp.Repository.Mongo
     public class RespositoryMongoDB<TEntity> : RespositoryMongoDBBase<TEntity>, IRepositoryMongoDB<TEntity>
         where TEntity : EntityMongoBase
     {
-        //protected readonly IContextMongoDB<TEntity> _context;
 
         public RespositoryMongoDB(IContextMongoDB<TEntity> context) : base(context)
         {
@@ -44,8 +40,5 @@ namespace HostApp.Repository.Mongo
             return data.Count == 1 ? data.First() : null;
         }
 
-        #region Private Helper Methods
-
-        #endregion
     }
 }

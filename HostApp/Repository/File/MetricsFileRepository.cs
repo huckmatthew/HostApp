@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 using HostApp.Core.Common;
 using HostApp.Core.DTO;
 using HostApp.Core.Interfaces;

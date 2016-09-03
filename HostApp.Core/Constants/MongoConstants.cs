@@ -4,5 +4,6 @@
     {
         public const string MongoDB = "MongoDB";
         public const string ConfigurationDatabase = "eptConfiguration";
+        public const string PersonDatabase = "person";
     }
 }

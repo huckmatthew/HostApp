@@ -9,22 +9,12 @@ namespace HostApp.Core.Common
         ApplicationConfigurationRespository,
         [EnumMember]
         ApplicationConfiguration,
-        //[EnumMember]
-        //Bus,
-        //[EnumMember]
-        //CacheConfiguration,
         [EnumMember]
         DefaultApplication,
-        //[EnumMember]
-        //LogSettings,
         [EnumMember]
         Metrics,
         [EnumMember]
-        MongoDB,
-        //[EnumMember]
-        //SQLConnections,
-        //[EnumMember]
-        //SubscriptionSettings
+        MongoDB
 
     }
 }

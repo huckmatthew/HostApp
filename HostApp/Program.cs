@@ -26,7 +26,7 @@ namespace HostApp
 
                 IService webapi = new WebAPIService();
 
-                var container = LoadContainer(appconfig, webapi);
+                var container = LoadIOCContainer(appconfig, webapi);
 
                 x.UseLog4Net();
                 x.UseLinuxIfAvailable();
@@ -67,7 +67,7 @@ namespace HostApp
             return loadConfig.Get();
         }
 
-        private static IContainer LoadContainer(object appConfig, IService apiService)
+        private static IContainer LoadIOCContainer(object appConfig, IService apiService)
         {
             var loadIOC = new LoadIOC();
             return loadIOC.Get(appConfig, apiService, null);

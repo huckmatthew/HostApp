@@ -32,7 +32,6 @@ namespace HostApp
         public bool Start(HostControl hostControl, IContainer container)
         {
             _container = container;
-            //_log = EPTLogManager.GetLogger(this.GetType());
             _log = LogManager.GetLogger("WebPIService");
             _log.Debug("Starting WebAPIService Starting!");
 
@@ -43,27 +42,12 @@ namespace HostApp
             if (startUp == null)
                 throw new Exception("StartUp Not configured correctly");
 
-            var baseAddress = string.Format("{0}:{1}", _appConfiguration.url, _appConfiguration.servicePort);
+            var baseAddress = $"{_appConfiguration.url}:{_appConfiguration.servicePort}";
             if (_webAppHolder == null)
             {
                 _webAppHolder = WebApp.Start(baseAddress,
                         appBuilder => startUp.Configuration(appBuilder, container));
             }
-
-            //try
-            //{
-            //    if (container.IsRegistered<IHostBus>() && _appConfiguration.IsConfigured)
-            //    {
-            //        _theApp = container.Resolve<IHostBus>();
-
-            //        _theApp.Startup();
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    _log.Warn(ex);
-            //}
 
             _log.Info("Host:{0} App:{1} Service Started on {2}!".FormatWith(_appConfiguration.HostName,
                 _appConfiguration.ApplicationName, baseAddress));
@@ -97,20 +81,6 @@ namespace HostApp
                 IService myservice = _container.Resolve<IService>();
                 var loadIOC = new LoadIOC();
                 loadIOC.Get(newconfig, myservice, _container);
-                //      var builder = new ContainerBuilder();
-                //      builder.RegisterInstance(newconfig).As<IApplicationConfiguration>();
-                //builder.RegisterInstance(newconfig).As<T>();
-                //      loadConfig.ConfigureCachingIOC(builder, (IApplicationConfiguration) newconfig);
-                //      builder.Update(_container);
-
-                //if (_container.IsRegistered<IHostBus>() && tempconfig.IsConfigured)
-                //{
-                //    _theApp = _container.Resolve<IHostBus>();
-
-                //    _theApp.Shutdown();
-                //    _theApp.Startup();
-                //}
-
 
             }
             catch (Exception ex)
@@ -125,8 +95,8 @@ namespace HostApp
         private static bool LogToEventLog(Exception ex)
         {
             var appLog = new EventLog { Source = Assembly.GetCallingAssembly().GetName().Name };
-            var message = string.Format("ERROR connect to or getting configuration data from the MongoDB Database. {0}\n{1}", ex.Message,
-                ex.InnerException != null ? ex.InnerException.Message : string.Empty);
+            var message =
+                $"ERROR connect to or getting configuration data from the MongoDB Database. {ex.Message}\n{(ex.InnerException != null ? ex.InnerException.Message : string.Empty)}";
             appLog.WriteEntry(message, EventLogEntryType.Error);
             Console.WriteLine(message);
             return false;

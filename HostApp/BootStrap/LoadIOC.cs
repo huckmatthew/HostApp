@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
@@ -34,8 +31,6 @@ namespace HostApp.BootStrap
                 var builder = new ContainerBuilder();
 
                 var config = (IRestServiceConfiguration)appConfig;
-                //builder.RegisterType<AutofacFactory>().As<IIOCFactory>();
-                //if (!config.IsConfigured) builder.RegisterType<ApiIsConfiguredMiddleWare>().InstancePerRequest();
 
                 builder.RegisterInstance(apiService).As<IService>();
                 builder.RegisterType<Startup>().As<IConfigureWebAPIService>();
@@ -57,24 +52,11 @@ namespace HostApp.BootStrap
                 {
 
                     ////Mongo Connections
-                    //builder.Register(
-                    //    c => new ContextMongoDB<SQLConnectionDTO>(config.MongoDBConnection, MongoConstants.ConfigurationDatabase))
-                    //    .As<IContextMongoDB<SQLConnectionDTO>>();
                     builder.Register(
                         c => new ContextMongoDB<SubscriptionSettingDTO>(config.MongoDBConnection, MongoConstants.ConfigurationDatabase))
                         .As<IContextMongoDB<SubscriptionSettingDTO>>();
-                    //builder.Register(
-                    //    c => new ContextMongoDB<ApplicationActivityDTO>(config.MongoDBConnection, MongoConstants.ConfigurationDatabase))
-                    //    .As<IContextMongoDB<ApplicationActivityDTO>>();
-                    //builder.Register(
-                    //    c => new ContextMongoDB<BusinessStateDTO>(config.MongoDBConnection, MongoConstants.WorkingStateDatabase))
-                    //    .As<IContextMongoDB<BusinessStateDTO>>();
-                    //builder.Register(
-                    //    c => new ContextMongoDB<TimeoutBusinessStateDTO>(config.MongoDBConnection, MongoConstants.WorkingStateDatabase))
-                    //    .As<IContextMongoDB<TimeoutBusinessStateDTO>>();
 
                     ////Repos
-                    ////AutofacHelper.RegisterDLL(builder, "EPT.Enterprise.DALFile.dll", "Repository");
                     AutofacHelper.RegisterDLL(builder, "Host*.dll", "Repository");
 
                     ////Logic

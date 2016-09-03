@@ -6,7 +6,6 @@ namespace HostApp.Interfaces
     public interface IApplicationConfigLogic
     {
         IRestServiceConfiguration GetRestServiceAppConfig(string connectionString, string hostName, string applicationName);
-        //Task<IServiceHostConfiguration> GetServiceHostConfig(string connectionString, string hostName, string applicationName);
 
     }
 }

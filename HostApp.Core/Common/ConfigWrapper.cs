@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HostApp.Core.Interfaces;
 
 namespace HostApp.Core.Common
@@ -18,7 +15,7 @@ namespace HostApp.Core.Common
                 return string.Empty;
             }
 
-            var dirpath = AppDomain.CurrentDomain.BaseDirectory;// HttpContext.Current.Server.MapPath(path);
+            var dirpath = AppDomain.CurrentDomain.BaseDirectory;
             var returnpath = Path.Combine(dirpath, path);
             return returnpath;
         }

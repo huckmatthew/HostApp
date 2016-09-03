@@ -3,17 +3,14 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using HostApp.Core.Common;
 using HostApp.Core.Extensions;
 using HostApp.Core.Utility;
-using Autofac;
-using HostApp.Core;
 using HostApp.Core.Constants;
 using HostApp.Core.DTO;
 using HostApp.Core.Interfaces;
+using HostApp.Interfaces;
 using HostApp.Logic;
-using IApplicationConfigLogic = HostApp.Interfaces.IApplicationConfigLogic;
 
 namespace HostApp.BootStrap
 {
@@ -32,8 +29,6 @@ namespace HostApp.BootStrap
             if (hostImps.Count() > 1)
                 throw new Exception("To many Application Configuration Classes Implemented");
 
-            //if (!hostImps.Any())
-            //    throw new Exception("No Application Configuration Classes Implemented");
             _host = null;
             if (hostImps.Count() == 1)
             {
@@ -49,9 +44,9 @@ namespace HostApp.BootStrap
         public object Get()
         {
             var defaultApp = GetDefaultApplication();
-            var temp =  Get(defaultApp);
-            return temp;
-            //return Get(defaultApp);
+            //var temp =  Get(defaultApp);
+            //return temp;
+            return Get(defaultApp);
         }
 
         /// <summary>
@@ -72,23 +67,6 @@ namespace HostApp.BootStrap
             return  LoadServiceConfiguration(hostName, defaultApp);
 
         }
-
-        /// <summary>
-        /// Configure the Cache for the application.  Will set up Autofac for this caching for the configuring application.
-        /// </summary>
-        /// <param name="builder"></param>
-        /// <param name="config"></param>
-        //public void ConfigureCachingIOC(ContainerBuilder builder, IApplicationConfiguration config)
-        //{
-        //    if (_host != null)
-        //    {
-        //        _host.ConfigureCaching(builder, config);
-        //    }
-        //    else
-        //    {
-        //        ConfigureCaching(builder, config);
-        //    }
-        //}
 
         /// <summary>
         /// Get the Default host name.
@@ -146,67 +124,6 @@ namespace HostApp.BootStrap
             Console.WriteLine(message);
         }
 
-        //public void ConfigureCaching(ContainerBuilder builder, IApplicationConfiguration config)
-        //{
-        //    var localCacheSettings = new CacheSettings();
-        //    var localSettings =
-        //        config.cacheConfiguration.FirstOrDefault(
-        //            d => d.cacheLocation.Equals(CacheLocation.Local.ToString(), StringComparison.CurrentCultureIgnoreCase));
-
-        //    if (localSettings != null)
-        //    {
-        //        localCacheSettings.Configure(localSettings);
-        //        if (localSettings.cacheType.Equals(CacheConstants.Memory, StringComparison.CurrentCultureIgnoreCase))
-        //        {
-        //            builder.RegisterType<CacheMemory>()
-        //                .SingleInstance()
-        //                .Keyed<ICache>(CacheLocation.Local)
-        //                .WithParameter(new TypedParameter(typeof(CacheSettings), localCacheSettings));
-        //        }
-        //        else
-        //        {
-        //            builder.RegisterType<CacheRedis>()
-        //                .Keyed<ICache>(CacheLocation.Local)
-        //                .WithParameter(new TypedParameter(typeof(CacheSettings), localCacheSettings));
-        //        }
-        //    }
-        //    else
-        //    {
-        //        builder.RegisterType<CacheMemory>()
-        //            .SingleInstance()
-        //            .Keyed<ICache>(CacheLocation.Local)
-        //            .WithParameter(new TypedParameter(typeof(CacheSettings), localCacheSettings));
-        //    }
-
-        //    var remoteCacheSettings = new CacheSettings();
-        //    var remoteSettings =
-        //        config.cacheConfiguration.FirstOrDefault(
-        //            d => d.cacheLocation.Equals(CacheLocation.Remote.ToString(), StringComparison.CurrentCultureIgnoreCase));
-        //    if (remoteSettings != null)
-        //    {
-        //        remoteCacheSettings.Configure(remoteSettings);
-        //        if (remoteSettings.cacheType.Equals(CacheConstants.Memory, StringComparison.CurrentCultureIgnoreCase))
-        //        {
-        //            builder.RegisterType<CacheMemory>()
-        //                .SingleInstance()
-        //                .Keyed<ICache>(CacheLocation.Remote)
-        //                .WithParameter(new TypedParameter(typeof(CacheSettings), remoteCacheSettings));
-        //        }
-        //        else
-        //        {
-        //            builder.RegisterType<CacheRedis>()
-        //                .Keyed<ICache>(CacheLocation.Remote)
-        //                .WithParameter(new TypedParameter(typeof(CacheSettings), remoteCacheSettings));
-        //        }
-        //    }
-        //    else
-        //    {
-        //        builder.RegisterType<CacheMemory>()
-        //            .SingleInstance()
-        //            .Keyed<ICache>(CacheLocation.Remote)
-        //            .WithParameter(new TypedParameter(typeof(CacheSettings), remoteCacheSettings));
-        //    }
-        //}
 
         public IRestServiceConfiguration LoadServiceConfiguration(string hostName, string appToLoad)
         {
@@ -216,7 +133,6 @@ namespace HostApp.BootStrap
             try
             {
 
-                //var mongoDBConnection = ConfigurationManager.ConnectionStrings[MongoConstants.MongoDB].ConnectionString;
                 IConfigWrapper configWrapper = new ConfigWrapper();
                 var appconfig = configWrapper.GetValue(ConfigKeys.ApplicationConfigurationRespository);
                 mongoDBConnection = configWrapper.GetConnectionValue(ConfigKeys.MongoDB);
@@ -248,14 +164,6 @@ namespace HostApp.BootStrap
             }
 
             newAppSettings.MongoDBConnection = mongoDBConnection;
-
-            //if (newAppSettings.IsConfigured)
-            //{
-            //    //Configure the Log now.
-            //    EPTLogManager.ResetConfiguraiton();
-            //    var settings = new EPTLogConfigure();
-            //    settings.Setup(newAppSettings.LogConfiguration);
-            //}
 
             return newAppSettings;
         }

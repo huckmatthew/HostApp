@@ -16,10 +16,7 @@ namespace HostApp.Core.DTO
         public int servicePort { get; set; }
         public string url { get; set; }
         public bool logMetricstoMongo { get; set; }
-        //public IEnumerable<SQLConnectionDTO> SQLConnection { get; set; }
         public IEnumerable<MetricsSettingDTO> MetricConfiguration { get; set; }
-        //public LogSettingDTO LogConfiguration { get; set; }
         public ExchangeSetting MessageExchange { get; set; }
-        //public IEnumerable<CacheConfigurationDTO> cacheConfiguration { get; set; }
     }
 }

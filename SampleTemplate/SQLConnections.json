@@ -1,0 +1,1 @@
+{"name":"masterconfig","connectionString":"Database=COBRApointHBEMaster;Server=localhost;Integrated Security=SSPI;Network Library=DBMSSOCN;MultiSubnetFailover=True;","providerName":"System.Data.SqlClient"}

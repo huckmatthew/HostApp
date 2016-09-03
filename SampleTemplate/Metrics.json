@@ -1,0 +1,5 @@
+{"hostName" : "default", "applicationName": "default","name" : "metrics", "url" : "metric", "enabled" : true}
+{"hostName" : "default", "applicationName": "default","name" : "json", "url" : "json", "enabled" : true}
+{"hostName" : "default", "applicationName": "default","name" : "health", "url" : "health", "enabled" : true}
+{"hostName" : "default", "applicationName": "default","name" : "ping", "url" : "metric-ping", "enabled" : true}
+{"hostName" : "default", "applicationName": "default","name" : "text", "url" : "metric-text", "enabled" : false}

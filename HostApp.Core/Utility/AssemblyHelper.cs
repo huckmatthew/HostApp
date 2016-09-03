@@ -47,14 +47,6 @@ namespace HostApp.Core.Utility
                         
                 }
             }
-            //foreach (var f in Directory.EnumerateFiles(currentPath, ".*.dll", SearchOption.TopDirectoryOnly))
-            //{
-            //    var assembly = Assembly.LoadFile(f);
-            //    var types = assembly.GetExportedTypes().Where(
-            //        t => interfaceType.IsAssignableFrom(t) && t.IsClass).ToArray();
-            //    if (types.Any())
-            //        foundTypes.AddRange(types);
-            //}
             return foundTypes;
         }
 

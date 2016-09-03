@@ -6,13 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using HostApp.Core.Extensions;
+using HostApp.Core.Web;
 using log4net;
 using Metrics;
 
 namespace SampleService1.Controller
 {
     [RoutePrefix("api/sample1")]
-    public class Sample1Controller : ApiController
+    public class Sample1Controller : APIControllerBase
     {
         private readonly Counter _counter = Metric.Context("SampleService1.Sample").Counter("Count", Unit.Requests);
         private readonly Timer _timer = Metric.Context("SampleService1.Sample").Timer("Requests", Unit.Requests);
