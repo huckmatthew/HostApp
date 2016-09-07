@@ -34,7 +34,7 @@ namespace PersonService.BootStrap
                     .As<IContextMongoDB<PersonDTO>>();
 
             builder.RegisterType<PersonSQLRepository>().As<IPersonRepository>();
-            builder.RegisterType<PersonMongoRepository>().As<IPersonRepository>();
+            //builder.RegisterType<PersonMongoRepository>().As<IPersonRepository>();
 
             AutofacHelper.RegisterDLL(builder, "PersonService.dll", "Logic");
 

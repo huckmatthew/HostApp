@@ -17,15 +17,15 @@ namespace HostApp.Logic
     {
         private readonly IApplicationRepository _applicationRepository;
         private readonly IMetricsRepository _metricsRepository;
-        private readonly IBusConfigurationRepository _rabbitMqRepository;
+        //private readonly IBusConfigurationRepository _rabbitMqRepository;
 
         public ApplicationConfigLogic(IApplicationRepository applicationRepository,
-            IMetricsRepository metricsRepository, 
-            IBusConfigurationRepository rabbitMqRepository)
+            IMetricsRepository metricsRepository)
+            //IBusConfigurationRepository rabbitMqRepository)
         {
             _applicationRepository = applicationRepository;
             _metricsRepository = metricsRepository;
-            _rabbitMqRepository = rabbitMqRepository;
+            //_rabbitMqRepository = rabbitMqRepository;
        
         }
 
@@ -33,13 +33,13 @@ namespace HostApp.Logic
         {
             _applicationRepository = new ApplicationMongoDBRepository(mongodbConnectionString, dbName);
             _metricsRepository = new MetricsMongDBRepository(new ContextMongoDB<MetricsSettingDTO>(mongodbConnectionString, dbName));
-            _rabbitMqRepository = new BusSettingsMongoDBRepository(new ContextMongoDB<BusSettingDTO>(mongodbConnectionString, dbName));
+            //_rabbitMqRepository = new BusSettingsMongoDBRepository(new ContextMongoDB<BusSettingDTO>(mongodbConnectionString, dbName));
         }
         public ApplicationConfigLogic()
         {
             _applicationRepository = new ApplicationFileRepository();
             _metricsRepository = new MetricsFileRepository();
-            _rabbitMqRepository = new BusSettingsFileRepository();
+            //_rabbitMqRepository = new BusSettingsFileRepository();
 
         }
 
@@ -67,10 +67,10 @@ namespace HostApp.Logic
 
             UpdateApplicationConfiguration(config, connectionString, hostName, applicationName);
 
-            if (config.busConfiguration == null)
-            {
-                config.busConfiguration = GetBusConfiguration(hostName, applicationName);
-            }
+            //if (config.busConfiguration == null)
+            //{
+            //    config.busConfiguration = GetBusConfiguration(hostName, applicationName);
+            //}
 
             return config;
         }
@@ -89,10 +89,10 @@ namespace HostApp.Logic
             return _metricsRepository.GetAll(hostName, applicationName);
         }
 
-        private BusSettingDTO GetBusConfiguration(string hostName, string applicationName)
-        {
-            return _rabbitMqRepository.Get(hostName, applicationName);
-        }
+        //private BusSettingDTO GetBusConfiguration(string hostName, string applicationName)
+        //{
+        //    return _rabbitMqRepository.Get(hostName, applicationName);
+        //}
 
     }
 }

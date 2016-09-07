@@ -1,0 +1,7 @@
+docker run -it  -p 9001:9000 -v /home/vagrant/docker/code/service1:/opt/appcode --name service19001 -t "hostapp"
+
+docker run -it  -p 9006:9000 -v /home/vagrant/docker/code/personservice:/opt/appcode --name personservice9006 -t "hostapp"
+
+docker run -it  -p 9007:9000 -v /home/vagrant/docker/code/personservice:/opt/appcode --name personservice9007 -t "hostapp"
+
+docker run -it  -p 9009:9000 -v /home/vagrant/docker/code/mattservice:/opt/appcode --name mattservice9009 -t "hostapp"

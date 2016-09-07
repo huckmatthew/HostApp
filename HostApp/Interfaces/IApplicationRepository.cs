@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using HostApp.Core.Interfaces;
+﻿using HostApp.Core.Interfaces;
 
 namespace HostApp.Interfaces
 {

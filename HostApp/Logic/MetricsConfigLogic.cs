@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HostApp.Core.Constants;
 using HostApp.Core.DTO;
 using HostApp.Core.Extensions;

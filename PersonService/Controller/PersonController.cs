@@ -11,7 +11,8 @@ namespace PersonService.Controller
     [RoutePrefix("api/person")]
     public class PersonController : APIControllerBase
     {
-        private readonly Counter _counter = Metric.Counter("Count", Unit.Requests);
+        private readonly Counter _counter = Metric.Counter("Total Requests", Unit.Requests);
+        private readonly Counter _counter2 = Metric.Counter("Total Requests2", Unit.Requests);
         private readonly Timer _timerGet = Metric.Timer("GetPerson", Unit.Requests);
         private readonly Timer _timerSearch = Metric.Timer("SearchPerson", Unit.Requests);
         private ILog _log;
@@ -28,7 +29,7 @@ namespace PersonService.Controller
         public IHttpActionResult Get(int? id)
         {
             _counter.Increment();
-
+            _counter2.Increment();
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));

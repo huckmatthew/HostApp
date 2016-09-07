@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Http;
-using System.Web.Http.Dispatcher;
 using Autofac;
 using Autofac.Integration.WebApi;
 using HostApp.Core.Interfaces;

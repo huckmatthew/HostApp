@@ -17,7 +17,6 @@ namespace HostApp
         private IApplicationConfiguration _appConfiguration;
         private ILog _log;
         private IContainer _container;
-        //private IHostBus _theApp;
 
         public WebAPIService()
         {
