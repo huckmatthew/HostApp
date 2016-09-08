@@ -1,6 +1,0 @@
-{
-  "hostName": "default",
-  "applicationName": "MattService",
-  "servicePort": 9000,
-  "url": "http://+"
-}
